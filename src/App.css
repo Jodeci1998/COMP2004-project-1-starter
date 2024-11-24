@@ -1,153 +1,287 @@
+/* resets all default margins and áddings  just os et box siszing to border-box for being consistent 
+in all my code here as i apply box-sizing to most of the elements*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* root container */
 #root {
   width: 100%;
   max-width: 1200px;
   min-width: 1150px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
+/* groceries app container to set everyhting together by also setting a fixed min height */
+.GroceriesApp-Container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* navbar as header */
 .NavBar {
   background-color: rgb(76, 43, 226);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  height: 100%;
+  padding: 20px 40px;
+  height: 120px; /* increased height a little */
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* navbar title  */
+.NavTitle {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* navdiv to hold user and cart */
 .NavDiv {
   width: 33%;
-}
-
-.NavTitle {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.NavCart {
-  text-align: right;
-  padding: 0 10px;
-}
-
+/* user greeting */
 .NavUser {
-  text-align: left;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* cart Section i added realtive position for the badge */
+.NavCart {
+  position: relative;
   padding: 0 10px;
 }
+/* cart image size */
+.NavCart img {
+  width: 40px;
+  height: 40px;
+}
 
-.GroceriesApp-Container {
-  width: 100%;
+/* main content Area to display the products and cart side by side */
+.MainContent {
   display: flex;
+  flex: 1;
   justify-content: space-between;
-
-  /* max-width: 800px; */
-  /* border: 1px solid white; */
+  padding: 20px 40px;
+  box-sizing: border-box;
+  background-color: black;
 }
 
-.CartContainer {
-  width: 25%;
-  justify-content: center;
-
-  /* position: sticky; */
-  /* top: 0; Adjust this value as needed */
-  /* max-height: 100vh; Ensure it doesn't exceed the viewport height */
-  /* overflow-y: auto; Add scroll if content exceeds the container height */
-
-  /* border: 1px solid white; */
-}
-
-.CartCard {
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: space-around;
-  align-items: center;
-  /* flex-wrap: wrap; */
-  border: 2px wheat solid;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 5px;
-  background-color: rgb(43, 48, 54);
-}
-
-.CartCardInfo {
-  /* display: flex;
-  justify-content: space-around; */
-  width: 50%;
-}
-
+/* products section */
 .ProductsContainer {
-  width: 75%;
-  max-width: 800px;
+  width: 70%;
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  /* border: 1px solid white; */
+  justify-content: flex-start;
+  gap: 20px;
 }
 
+/* individual product card */
 .ProductCard {
-  width: 20%;
-  border: 2px wheat solid;
+  width: 30%;
+  border: 2px orange solid;
   border-radius: 10px;
-  margin: 10px;
-  padding: 5px;
+  padding: 15px;
+  text-align: center;
+  background-color: lightblue;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/*hover effect for productcard  */
+.ProductCard:hover {
+  transform: translateY(
+    -5px
+  ); /*had to look up this on the web this makes the product card lift up a little 
+  just wanted to make it more interactive  */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
+.ProductCard img {
+  width: 50%;
+  height: 60px;
+
+  border-radius: 5px;
+}
+
+/* quantity controls within product card */
 .ProductQuantityDiv {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  margin: 10px 0;
 }
 
+/* quantity button  */
 .QuantityBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
-  height: 25px;
-  border: 1px solid white;
+  width: 30px;
+  height: 30px;
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   margin: 0 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
 }
+/* to transition the background color blue to purple when selected*/
 .QuantityBtn:hover {
   background-color: rgb(76, 43, 226);
 }
 
-img {
-  height: 50px;
-  border-radius: 5px;
-}
-
-.counter-container {
-  /* border: 1px solid white; */
-  display: flex;
-  width: 70%;
-  height: 20px;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5px auto;
-}
-
-.counter-button {
-  width: 15px;
-  height: 15px;
-  border: 1px solid white;
-  border-radius: 50%;
+/* add to cart button */
+.AddToCartButton {
+  margin-top: 10px;
+  padding: 10px 20px;
   cursor: pointer;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
+.AddToCartButton:hover {
+  background-color: #45a049;
+}
+
+/* cart container */
+.CartContainer {
+  width: 25%;
+
+  /* flexbox for vertical alignment */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* sticky positioning so it stays on screeen while scrolling */
+  position: sticky;
+  top: 120px; /* matches navbar height */
+
+  /* prevent overflow and scrolling within the cart vh for viewport height*/
+  /* unsing a css fucntion called cacl that helps do calculations to determine css properties
+  in a dynamic way so i  this case im performing a substraction so the 100 vh minus the fixed 120px  */
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+
+  /* appearance of the cart container*/
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* individual cart item card */
+.CartCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px orange solid;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 15px;
+  background-color: rgb(43, 48, 54);
+  color: white;
+  box-sizing: border-box;
+  width: 250px;
+}
+
+.CartCard img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* cart card information */
+.CartCardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* cart list buttons */
 .CartListBtns {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* Centers the buttons */
+  gap: 20px; /* Adds space between buttons */
+  width: 100%;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
+
+/* remove and buy buttons */
+.RemoveButton,
+#BuyButton {
+  padding: 10px 10px;
+  width: 110px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px 0;
+  color: white;
 }
 
 .RemoveButton {
   background-color: rgb(190, 0, 0);
+  margin-top: 10px;
+}
+/* hover effect to darkred just so the button text stays visible*/
+.RemoveButton:hover {
+  background-color: darkred;
 }
 
 #BuyButton {
   background-color: green;
-  width: 50%;
+}
+
+#BuyButton:hover {
+  background-color: darkgreen;
+}
+
+/* quantity counter within cart card */
+.counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.counter-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.counter-button:hover {
+  background-color: rgb(76, 43, 226);
 }
